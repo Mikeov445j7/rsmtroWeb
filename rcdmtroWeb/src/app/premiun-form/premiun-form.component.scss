@@ -1,0 +1,80 @@
+.cont-div {
+  width: 50%;
+  margin: auto
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+circle {
+  fill: #25d366;
+}
+
+path {
+  fill: #fff;
+}
+
+svg {
+  width: 80px;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .4));
+}
+
+.whatapp {
+  width: 90%;
+  margin: auto;
+  padding: 2%;
+  display: flex;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px rgb(238, 232, 232);
+
+}
+
+.logo {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto {
+  width: 75%;
+  color: #fff;
+  font-size: large;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3%;
+}
+
+
+@media only screen and (max-width: 420px) {
+  .cont-div {
+    width: 100%;
+    margin: auto
+  }
+
+  .logo {
+    text-align: center;
+
+  }
+
+  .card2 {
+    width: 100%;
+    margin: auto
+  }
+
+  svg {
+    width: 40px;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .4));
+  }
+
+  .texto {
+    font-size: small;
+  }
+
+
+}

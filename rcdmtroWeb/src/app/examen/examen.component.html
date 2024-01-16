@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <div [ngClass]="{'reloj': reloj>=maxTime, 'mitad': maxTime<mitad , 'cerca': maxTime<=cerca}">{{tiempo}}</div>
+  </ion-toolbar>
+  <ion-card *ngIf="hidevalue">
+    <div class="finexamen">
+      <ion-card-subtitle>SE ACABO EL TIEMPO</ion-card-subtitle>
+      <ion-card-subtitle style="color: #0b70cf; margin-bottom: 1%;">Contestadas: {{Pconstestadas}}</ion-card-subtitle>
+      <ion-card-subtitle style="color: rgb(4, 85, 4); margin-bottom: 1%">Correctas: {{Pcorrectas}}</ion-card-subtitle>
+      <ion-card-subtitle style="color: #cf630b; margin-bottom: 1%">Incorrectas: {{Pincorrectas}}</ion-card-subtitle>
+      <ion-card-title>
+        <h2>tu calificacion es {{calificacion}}/100</h2>
+      </ion-card-title>
+      <ion-button (click)="iniciarExamen()">
+        <ion-icon name="stopwatch"></ion-icon> Otro Examen
+      </ion-button>
+      <ion-button color="success" routerLink="/home">
+        <ion-icon name="arrow-back"></ion-icon> Volver
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngIf="examen.length<1&&exaIniciado">
+    <ion-card-content>
+      <div class="l-cont">
+        <div class="lds-heart">
+          <div></div>
+        </div>
+        <h3>Preparando Examen....</h3>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="examen.length>0 && exaIniciado">
+    <ion-card-content *ngFor="let p of examen let pi=index;">
+      <div class="pregunta">{{p.numero}}. {{p.pregunta}}</div>
+      <div class="respuestas">
+        <div class="resp" *ngFor="let r of p.respuestas let ri=index;"
+          [ngClass]="{'correcta':r.correcta===1&&terminado, 'incorrecta':r.correcta!==1&&terminado&&r.seleccionada===1}"
+          (click)="responder(r.correcta, pi, ri, p.contestada)">
+          <div class="opcion">{{r.opcion}} </div>
+          <div class="texto">{{r.texto}}</div>
+          <div class="equis" *ngIf="r.seleccionada===1"
+            [ngClass]="{'correctaI':r.correcta===1&&terminado, 'incorrectaI':r.correcta!==1&&terminado&&r.seleccionada===1}">
+            <ion-icon name="checkbox-outline" style="font-size: x-large;"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+                    <ion-button (click)="terminarExamen()">
+                      <ion-icon name="stopwatch"></ion-icon> Terminar Examen
+                    </ion-button>
+  </ion-card>
+  <ion-card>
+    <div class="btns" *ngIf="!exaIniciado">
+      <ion-card-content>
+        <ion-card-subtitle style="font-size: larger;">
+          Este reto te permitirá simular un examen de 100 preguntas de exámenes utilizadas que pueden estar en uno real,
+          tienes una hora.
+        </ion-card-subtitle>
+        <ion-card-title>¿ESTAS LISTO?</ion-card-title>
+      </ion-card-content>
+      <ion-button (click)="iniciarExamen()">
+        <ion-icon name="stopwatch"></ion-icon> INICIAR EXAMEN
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>

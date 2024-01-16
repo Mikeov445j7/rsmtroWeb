@@ -1,0 +1,59 @@
+<ion-content [fullscreen]="true">
+  <div id="superpuesto" *ngIf="ver">
+    <div id="divSplash">
+      <div id="cero">
+        <div id="uno"></div>
+        <div id="dos"></div>
+        <div id="text">residenciometro</div>
+      </div>
+      <!---
+
+      <div id="botones" (click)="loginwithgoogle()" *ngIf="!log&&!contrase">
+        <div class="logo"></div>
+        <div class="texto">Entrar con Google</div>
+      </div>
+      -->
+      <div class="botones2" routerLink="/home" *ngIf="log">
+        <ion-button expand="full" color="primary"> <ion-icon name="home-sharp"></ion-icon> INICIO</ion-button>
+      </div>
+
+      <div id="form-reg" *ngIf="!log&&!contrase">
+        <div style="color: #fff; text-align: center; margin-top: 2%;">Login / Registro</div>
+        <div style="color: #fff; text-align: center; margin-top: 2%;">{{msj}}</div>
+        <form #userFrom="ngForm">
+          <div>
+            <ion-input required labelPlacement="floating" value="" name="email" #email [(ngModel)]="logdata.email">
+              <div slot="label">Email</div>
+            </ion-input>
+          </div>
+          <div>
+            <ion-input required type="password" labelPlacement="floating" value="" name="pass" #pass
+              [(ngModel)]="logdata.pass">
+              <div slot="label">Contraseña</div>
+            </ion-input>
+          </div>
+        </form>
+        <br>
+        <ion-button expand="full" color="primary" [disabled]="userFrom.invalid"
+          (click)="login(userFrom.value)"><ion-icon name="log-in"></ion-icon> ENTRAR</ion-button>
+      </div>
+      <div id="form-reg" *ngIf="!log&&contrase">
+        <div style="color: #fff; text-align: center; margin-top: 2%;">Por favor Registre su Contraseña</div>
+        <div style="color: #fff; text-align: center; margin-top: 2%;">{{msj}}</div>
+        <form #passFrom="ngForm">
+          <ion-input required type="password" labelPlacement="floating" value="" name="pass1" #pass1
+            [(ngModel)]="pass.pass1">
+            <div slot="label">Password</div>
+          </ion-input>
+          <ion-input required type="password" labelPlacement="floating" value="" name="pass2" #pass2
+            [(ngModel)]="pass.pass2">
+            <div slot="label">Repite tu Password</div>
+          </ion-input>
+        </form>
+        <br>
+        <ion-button expand="full" color="primary" [disabled]="passFrom.invalid"
+          (click)="resPass(passFrom.value)"><ion-icon name="save"></ion-icon> Guardar</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>

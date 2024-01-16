@@ -1,0 +1,198 @@
+.textPregunta {
+  font-size: 13px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 2%;
+  box-shadow: 3px 3px 3px 3px rgba(235, 235, 235, 0.63);
+  border-radius: 5px;
+}
+
+.texto {
+  font-size: 13px;
+  padding: 2%;
+}
+
+.correcta {
+  margin: auto;
+  margin-top: 4%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 3px 3px 3px rgba(235, 235, 235, 0.63);
+  border-radius: 5px;
+  min-height: 60px;
+  background: rgba(51, 217, 178, 1);
+  box-shadow: 0 0 0 0 rgba(51, 217, 178, 1);
+  animation: pulse 2s infinite;
+}
+
+.incorrecta {
+  background-color: rgb(255, 127, 127);
+  margin: auto;
+  margin-top: 4%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 3px 3px 3px rgba(235, 235, 235, 0.63);
+  border-radius: 5px;
+  min-height: 60px;
+  cursor: pointer;
+}
+
+.opcion {
+  background-color: #5ba1d6;
+  color: #eff3f7;
+  min-height: 60px;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  padding: 1%;
+  border-top-left-radius: 5px 5px;
+  border-bottom-left-radius: 5px 5px;
+}
+
+.btn {
+  margin: auto;
+  margin-top: 4%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 3px 3px 3px 3px rgba(235, 235, 235, 0.63);
+  border-radius: 5px;
+  min-height: 60px;
+  cursor: pointer;
+}
+
+ion-toast.tIncorrecto {
+  --background: rgb(255, 127, 127);
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+ion-toast.tCorrecto {
+  --background: rgba(51, 217, 178, 1);
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: #ffffff;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(51, 217, 178, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(51, 217, 178, 0);
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .correcta {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .incorrecta {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+}
+
+@media only screen and (max-width: 306px) {
+  .incorrecta {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .correcta {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+}
+
+.l-cont {
+  width: 96%;
+  padding: 2%;
+  margin: auto;
+  text-align: center;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+}
+
+.lds-heart div {
+  top: 32px;
+  left: 32px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #5ba1d6;
+  animation: lds-heart 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: #5ba1d6;
+}
+
+.lds-heart div:before {
+  left: -24px;
+  border-radius: 50% 0 0 50%;
+}
+
+.lds-heart div:after {
+  top: -24px;
+  border-radius: 50% 50% 0 0;
+}
+
+@keyframes lds-heart {
+  0% {
+    transform: scale(0.95);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}

@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true" *ngIf="user">
+  <ion-header >
+    <ion-toolbar color="primary">
+     <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>USUARIO</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-card class="profile">
+      <div class="profile-picture" style="background-image: url({{image}});">
+      </div>
+      <div class="profile-name">{{nombre}}</div>
+    </ion-card>
+    <ion-card  *ngIf="!premium">
+        <ion-button color="primary" [routerLink]="['/obtener-premium']">
+           <ion-icon name="ribbon"></ion-icon>  OBTEN TU CUENTA PREMIUM
+        </ion-button>
+    </ion-card>
+    <ion-card>
+        <ion-button color="danger" (click)="cerrarSesion()">
+          <ion-icon name="exit-outline"></ion-icon>  CERRAR SESION
+        </ion-button>
+    </ion-card>
+  </ion-content>
+

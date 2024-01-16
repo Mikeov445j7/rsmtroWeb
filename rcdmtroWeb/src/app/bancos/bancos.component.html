@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bancos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="cargando">
+    <ion-card-content>
+      <div class="l-cont">
+        <div class="lds-heart">
+          <div></div>
+        </div>
+        <h3>Cargando......</h3>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!cargando">
+    <ion-card *ngFor="let item of bancos" routerLink="/pregunta/{{grupo}}/{{item.id}}">
+      <ion-card-content>
+        <ion-label style="margin-bottom: 3%;">{{item.descripcion}}</ion-label>
+      </ion-card-content>
+    </ion-card>
+  </ion-card>
+
+</ion-content>
+

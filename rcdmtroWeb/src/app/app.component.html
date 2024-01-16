@@ -1,0 +1,49 @@
+
+<div id="fulcont">
+<ion-app>
+
+  <ion-content>
+    <ion-fab slot="fixed" vertical="top" horizontal="end">
+      <ion-fab-button color="primary">
+        <ion-icon name="menu"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="bottom">
+        <ion-fab-button color="success" [routerLink]="['home']">
+          <ion-icon name="home"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="primary" [routerLink]="['perfil']">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="tertiary" [routerLink]="['/obtener-premium']">
+          <ion-icon name="ribbon"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="primary" [routerLink]="['/sharing']">
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+
+
+
+    <ion-router-outlet></ion-router-outlet>
+
+
+
+  </ion-content>
+
+  <ion-footer *ngIf="isLog" style="background-color: #ffffff;">
+    <img *ngIf="activo===1" src="https://www.predeconst.online/recidenciometro/1/rbP.png" style="width: 100%;" alt="">
+    <img *ngIf="activo===0" src="https://www.predeconst.online/recidenciometro/1/rb.png" style="width: 100%;" alt="">
+  </ion-footer>
+
+
+<!----
+      <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+        <ion-fab-button color="primary" [routerLink]="['/sharing']">
+          <ion-icon name="share"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+-->
+</ion-app>
+</div>

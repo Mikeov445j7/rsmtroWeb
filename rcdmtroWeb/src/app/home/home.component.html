@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="cargando">
+    <ion-card-content>
+      <!----
+          <app-loading></app-loading>
+          ---->
+      <div class="l-cont">
+        <div class="lds-heart">
+          <div></div>
+        </div>
+        <h3>Cargando......</h3>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!cargando">
+    <ion-card-content>
+      <ion-card-title>BANCOS DE PREGUNTAS: AREAS</ion-card-title>
+      <ion-list>
+        <ion-item style="margin-bottom: 3%;" *ngFor="let item of areas" routerLink="/bancos/{{item.id}}">
+          <ion-thumbnail slot="start">
+            <img alt="{{item.descripcion}}" src="{{item.imgurl}}" />
+          </ion-thumbnail>
+          <ion-label>{{item.descripcion}}</ion-label>
+        </ion-item>
+
+      </ion-list>
+      <ion-card-title>RETOS</ion-card-title>
+      <ion-list>
+        <ion-item style="margin-bottom: 3%; color: rgb(143, 106, 6);" *ngIf="!premium" routerLink="/obtener-premium">
+          <ion-thumbnail slot="start">
+            <img alt="Simular Examen" src="assets/e.png" />
+          </ion-thumbnail>
+          <ion-label>SIMULADOR DE EXÁMENES <ion-icon name="contact"></ion-icon></ion-label>
+        </ion-item>
+        <ion-item style="margin-bottom: 3%;" *ngIf="premium" routerLink="/examen">
+          <ion-thumbnail slot="start">
+            <img alt="Simular Examen" src="assets/e.png" />
+          </ion-thumbnail>
+          <ion-label>SIMULADOR DE EXÁMENES</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-card-title>ARCHIVOS</ion-card-title>
+      <ion-list>
+        <ion-item style="margin-bottom: 3%; color: rgb(143, 106, 6);" *ngIf="!premium" routerLink="/obtener-premium">
+          <ion-thumbnail slot="start">
+            <img alt="Simular Examen" src="assets/a.png" />
+          </ion-thumbnail>
+          <ion-label>EXAMENES PASADOS <ion-icon name="contact"></ion-icon></ion-label>
+        </ion-item>
+        <ion-item style="margin-bottom: 3%;" *ngIf="premium" routerLink="/examenes-pasados">
+          <ion-thumbnail slot="start">
+            <img alt="Simular Examen" src="assets/a.png" />
+          </ion-thumbnail>
+          <ion-label>EXAMENES PASADOS</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

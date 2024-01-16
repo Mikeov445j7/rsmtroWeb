@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="banco" style="font-size: medium;">{{banco.descripcion}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="!pregunta">
+    <ion-card-content>
+      <!----
+        <app-loading></app-loading>
+        ---->
+      <div class="l-cont">
+        <div class="lds-heart">
+          <div></div>
+        </div>
+        <h3>Cargando......</h3>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="pregunta">
+    <ion-list>
+      <ion-item>
+        <ion-label>Puntos en este Tema: </ion-label>
+        <ion-badge slot="end">{{score}}</ion-badge>
+      </ion-item>
+    </ion-list>
+    <ion-card-content>
+      <ion-card-subtitle>{{pregunta[0].pregunta}}</ion-card-subtitle>
+      <div class="pregunta" *ngIf="pregunta">
+        <div class="respuestas">
+          <div class="resp1" *ngIf="!contestado">
+            <div class="btn" *ngFor="let bt of pregunta.respuestas" (click)="ir(bt)">
+              <div class="opcion">{{bt.opcion}}</div>
+              <div class="texto">{{bt.texto}}</div>
+            </div>
+          </div>
+          <div class="resp2" *ngIf="contestado">
+            <div *ngFor="let bt of pregunta.respuestas"
+              [ngClass]="{'correcta': bt.correcta, 'incorrecta': bt.fallo, 'btn': !bt.fallo&&!bt.correcta}">
+              <div class="opcion">{{bt.opcion}}</div>
+              <div class="texto">{{bt.texto}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-toast [isOpen]="isToastOpen" message={{toasMsg}} [duration]="2000" (didDismiss)="setOpen(false)" position="top"
+    class={{tClase}} icon={{tIcono}}></ion-toast>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="contestado&&!irPremiun" (click)="continuar()">
+    <ion-fab-button>
+      <ion-icon name="chevron-forward-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" *ngIf="contestado&&irPremiun" routerLink="/obtener-premium">
+    <ion-fab-button color="success">
+      <ion-icon name="chevron-forward-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
